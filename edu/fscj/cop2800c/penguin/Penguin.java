@@ -12,13 +12,19 @@ public class Penguin extends Bird {
     private double flipperLength;
 
     // Constructor
-    public Penguin(int sampleNum, String species, 
-                   double culmenLength, double culmenDepth, 
-                   double bodyMass, String sex, double flipperLength) {
-        super(sampleNum, culmenLength, culmenDepth, bodyMass, sex);
-        this.species = species;
-        this.flipperLength = flipperLength;
+   public Penguin(int sampleNum, String species, double culmenLength,
+               double culmenDepth, double bodyMass, String sex,
+               double flipperLength) throws InvalidBirdDataException {
+
+    super(sampleNum, culmenLength, culmenDepth, bodyMass, sex);
+
+    if (flipperLength < 0 || species == null || species.isEmpty()) {
+        throw new InvalidBirdDataException("Invalid Penguin data encountered.");
     }
+
+    this.species = species;
+    this.flipperLength = flipperLength;
+}
 
     // Getter methods
     public String getSpecies() {
